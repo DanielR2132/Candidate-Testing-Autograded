@@ -18,19 +18,23 @@ let candidateAnswers;
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-let candidateName = imput.question("Please enter your name:")
+let candidateName = input.question("Please enter your name:");
 }
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-
+ candidateAnswer = input.question(question);
 
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-
+if (correctAnswer === correctAnswer){
+  console.log("You are correct!");
+} else {
+  console.log("Incorrect!");
+}
 
 
   let grade;  //TODO 3.2 use this variable to calculate the candidates score.
