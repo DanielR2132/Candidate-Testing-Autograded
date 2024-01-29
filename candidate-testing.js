@@ -73,7 +73,7 @@ for (let i = 0 ; i < candidateAnswers.length; i++) {
   if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
   tCorrectAnswers++;
   } 
-}
+} 
 
 let grade = (tCorrectAnswers / questions.length) * 100;
 
