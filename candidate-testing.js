@@ -57,10 +57,46 @@ function gradeQuiz(candidateAnswers) {
 }
 
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+  let grade = 0; //TODO 3.2 use this variable to calculate the candidates score.
+  let count = 0;
 
+  for (let j = 0; j < candidateAnswers.length; j++) {
+    if (candidateAnswers[j].toString().toLowerCase() === correctAnswers[j].toString().toLowerCase()) {
+      count++;
+    }
+  }
+
+  grade = (count / questions.length) * 100;
+
+
+  let line = "------------------------------------";
+  console.log(line);
+  console.log(`\nCandidate Name : ${candidateName}`);
+  console.log(line);
+
+  for (let c = 0; c < questions.length; c++) {
+
+    let quesNum = c + 1;
+    console.log(`\nThe question number ${quesNum} is:\n${questions[c]}`);
+    console.log(`\nYour answer : ${candidateAnswers[c]}`);
+    console.log(`\nCorrect answer : ${correctAnswers[c]}`);
+
+  }
+
+  console.log(`\n\n>>> Overall Grade: ${grade}% (${count} of ${questions.length} answers correct) <<<`);
+  console.log(line);
+  if (grade >= 80) {
+    console.log(`\nYour exam status >>> PASSED <<<`);
+  } else {
+    console.log(`\nSorry you exam >>> FAILED <<<`);
+  }
+  console.log();
+  console.log(line);
 
   return grade;
+
+
+  
 
 
 function runProgram() {
