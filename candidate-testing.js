@@ -44,61 +44,50 @@ function askQuestion() {}
   candidateAnswers.push(candidateAnswer);
  }
 
-function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
 /*if (correctAnswers === candidateAnswers){
   console.log("You are correct!");
 } else {*/
   for (let i = 0; i < correctAnswers.length; i++){
-    console.log(`Your answer was ${candidateAnswers[i]}, the correct answer is ${correctAnswers[i]}`);
+    console.log(`Your answer is ${candidateAnswers[i]}, the correct answer is ${correctAnswers[i]}`);
   }
   
+  let grade; //TODO 3.2 use this variable to calculate the candidates score.
+
+
+  for (let i = 0; i < questions.length; i++) {
+    candidateAnswers[i] = input.question(`${questions[i] } \nYour Answer: `); 
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+      console.log('Correct!');
+      } else console.log(`Incorrect! Correct Answer: ${correctAnswers[i]}`);
+  }
+
+
+  function gradeQuiz(candidateAnswers) {
+
+
+  let tCorrectAnswers = 0;
+
+for (let i = 0 ; i < candidateAnswers.length; i++) {
+  if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+  tCorrectAnswers++;
+  } 
+}
+
+let grade = (tCorrectAnswers / questions.length) * 100;
+
+
+if (grade >= 80){ 
+console.log(`\nStatus: Quiz Passed \nGrade: ${grade}% - You got ${tCorrectAnswers} out of ${questions.length} answers correct. `)
+} else { 
+  console.log(`\nStatus: Quiz Failed \nGrade: ${grade}% - You got ${tCorrectAnswers} out of ${questions.length} answers correct. `)
+}
+    return grade;
 }
 
 
-  let grade = 0; //TODO 3.2 use this variable to calculate the candidates score.
-  let count = 0;
-
-  for (let j = 0; j < candidateAnswers.length; j++) {
-    if (candidateAnswers[j].toString().toLowerCase() === correctAnswers[j].toString().toLowerCase()) {
-      count++;
-    }
-  }
-
-  grade = (count / questions.length) * 100;
-
-
-  let line = "------------------------------------";
-  console.log(line);
-  console.log(`\nCandidate Name : ${candidateName}`);
-  console.log(line);
-
-  for (let c = 0; c < questions.length; c++) {
-
-    let quesNum = c + 1;
-    console.log(`\nThe question number ${quesNum} is:\n${questions[c]}`);
-    console.log(`\nYour answer : ${candidateAnswers[c]}`);
-    console.log(`\nCorrect answer : ${correctAnswers[c]}`);
-
-  }
-
-  console.log(`\n\n>>> Overall Grade: ${grade}% (${count} of ${questions.length} answers correct) <<<`);
-  console.log(line);
-  if (grade >= 80) {
-    console.log(`\nYour exam status >>> PASSED <<<`);
-  } else {
-    console.log(`\nSorry you exam >>> FAILED <<<`);
-  }
-  console.log();
-  console.log(line);
-
-  return grade;
-
-
   
-
-
 function runProgram() {
   askForName();
   // TODO 1.1c: Greet candidate using their name //
